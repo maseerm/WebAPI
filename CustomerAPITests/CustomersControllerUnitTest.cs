@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 using System;
 using Xunit;
 using Moq;
+using System.Threading.Tasks;
 
 namespace CustomerAPITests
 {
@@ -80,10 +81,32 @@ namespace CustomerAPITests
         }
 
         [Fact]
+        public async void Test_GetCustomerByName_Return_StatusCode()
+        {
+            //Arrange      
+            var customerName = "Mark";
+            _mockCustomerService.Setup(x => x.GetCustomer(customerName)).Returns(Task.FromResult(new Customer
+            {
+                CustomerId = 1,
+                LastName = "Monogios",
+                FirstName = "Mark",
+                DateOfBirth= DateTime.Parse("25/01/1990")
+            })); 
+
+            //Act
+            var response = await _customersController.GetCustomer(customerName);
+
+            //Assert
+            //Expected 200, Actual result.StatusCode
+            var result = Assert.IsType<OkObjectResult>(response);
+            Assert.Equal(200, result.StatusCode);
+        }
+
+        [Fact]
         public async void Test_GetCustomerByName_Return_NotFound()
         {     
             //Arrange      
-            var customerName = "Mark";
+            var customerName = "Miano";
            
             //Act
             var response = await _customersController.GetCustomer(customerName);
@@ -116,6 +139,26 @@ namespace CustomerAPITests
         }
 
         [Fact]
+        public async void Test_UpdateCustomer_Return_NotFount()
+        {
+            //Arrange
+            var newCustomer = new Customer
+            {
+                CustomerId = 3,
+                FirstName = "Karl",
+                LastName = "Shaw",
+                DateOfBirth = DateTime.Parse("25/01/1985")
+            };
+
+            //Act
+            var response = await _customersController.UpdateCustomer(newCustomer);
+
+            //Assert
+            //Expected NotFoundResult, Actual <NotFoundResult>response
+            Assert.IsType<NotFoundResult>(response);
+        }
+
+        [Fact]
         public async void Test_DaleteCustomer_Return_StatusCode()
         {
             //Arrange
@@ -129,6 +172,20 @@ namespace CustomerAPITests
             //Expected 200, Actual result.StatusCode
             var result = Assert.IsType<OkResult>(response);
             Assert.Equal(200, result.StatusCode);
+        }
+
+        [Fact]
+        public async void Test_DaleteCustomer_Return_NotFound()
+        {
+            //Arrange
+            var customerId = 10;
+           
+            //Act
+            var response = await _customersController.DeleteCustomer(customerId);
+
+            //Assert
+            //Expected NotFoundResult, Actual <NotFoundResult>response
+            Assert.IsType<NotFoundResult>(response);
         }
 
     }
