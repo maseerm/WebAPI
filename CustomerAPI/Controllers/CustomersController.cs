@@ -1,54 +1,47 @@
 ﻿
 using CustomerData.Models;
 using CustomerData.Services;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace CustomerAPI.Controllers
 {
-    [Route("api/[controller]")]
-    [ApiController]
-    public class CustomerController : ControllerBase
+   
+    [ApiController, Route("api/v1/[controller]")]
+    [Consumes("application/json")]
+    public class CustomersController : ControllerBase
     {
 
         private readonly ICustomerService _customerService;
-
-        public CustomerController(ICustomerService customerService)
+        public CustomersController(ICustomerService customerService)
         {
-            this._customerService = customerService;
+            _customerService = customerService;
         }
-
+  
         [HttpPost]
-        [Route("AddCustomer")]
         public async Task<IActionResult> AddCustomer([FromBody] Customer customer)
-        {
-           
+        {         
                 try
                 {
-                    var custId = await _customerService.AddCustomer(customer);
-                    if (custId > 0)
+                    var customerId = await _customerService.AddCustomer(customer);
+                    if (customerId > 0)
                     {
-                        return Ok(custId);
-                    }
+                    
+                    return CreatedAtAction("AddCustomer", customerId);
+                }
                     else
                     {
-                        return NotFound();
+                        return BadRequest();
                     }
                 }
                 catch (Exception)
                 {
-
                     return BadRequest();
                 }
-
         }
 
         [HttpGet]
-        [Route("GetCustomer")]
         public async Task<IActionResult> GetCustomer(string customerName)
         {
             try
@@ -56,23 +49,20 @@ namespace CustomerAPI.Controllers
                 var customer = await _customerService.GetCustomer(customerName);
                 if (customer == null)
                 {
-                return NotFound();
+                    return NotFound();
                 }
-                return Ok(customer);
+                    return Ok(customer);
             }
             catch (Exception)
             {
-
                 return BadRequest();
             }
         }
 
         [HttpPatch]
-        [Route("UpdateCustomer")]
         public async Task<IActionResult> UpdateCustomer([FromBody] Customer customer)
         {
-                int result = 0;
-
+                int result;
                 try
                 {
                     result= await _customerService.UpdateCustomer(customer);
@@ -87,15 +77,12 @@ namespace CustomerAPI.Controllers
                 {
                    return BadRequest();
                 }
-
         }
 
         [HttpDelete]
-        [Route("DeleteCustomer")]
         public async Task<IActionResult> DeleteCustomer(int? customerId)
         {
-            int result = 0;
-
+            int result;
             try
             {
                 result = await _customerService.DeleteCustomer(customerId);

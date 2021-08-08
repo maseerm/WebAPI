@@ -9,3 +9,14 @@ C:\MyDocs\Technology\Microsoft\ASP.NETCore5.1API\Alinta\CustomerData\obj\Debug\n
 C:\MyDocs\Technology\Microsoft\ASP.NETCore5.1API\Alinta\CustomerData\obj\Debug\net5.0\CustomerData.dll
 C:\MyDocs\Technology\Microsoft\ASP.NETCore5.1API\Alinta\CustomerData\obj\Debug\net5.0\ref\CustomerData.dll
 C:\MyDocs\Technology\Microsoft\ASP.NETCore5.1API\Alinta\CustomerData\obj\Debug\net5.0\CustomerData.pdb
+C:\MyDocs\Technology\Microsoft\ASP.NETCore5.1API\Alinta\WebAPI\CustomerData\bin\Debug\net5.0\CustomerData.deps.json
+C:\MyDocs\Technology\Microsoft\ASP.NETCore5.1API\Alinta\WebAPI\CustomerData\bin\Debug\net5.0\CustomerData.dll
+C:\MyDocs\Technology\Microsoft\ASP.NETCore5.1API\Alinta\WebAPI\CustomerData\bin\Debug\net5.0\ref\CustomerData.dll
+C:\MyDocs\Technology\Microsoft\ASP.NETCore5.1API\Alinta\WebAPI\CustomerData\bin\Debug\net5.0\CustomerData.pdb
+C:\MyDocs\Technology\Microsoft\ASP.NETCore5.1API\Alinta\WebAPI\CustomerData\obj\Debug\net5.0\CustomerData.GeneratedMSBuildEditorConfig.editorconfig
+C:\MyDocs\Technology\Microsoft\ASP.NETCore5.1API\Alinta\WebAPI\CustomerData\obj\Debug\net5.0\CustomerData.AssemblyInfoInputs.cache
+C:\MyDocs\Technology\Microsoft\ASP.NETCore5.1API\Alinta\WebAPI\CustomerData\obj\Debug\net5.0\CustomerData.AssemblyInfo.cs
+C:\MyDocs\Technology\Microsoft\ASP.NETCore5.1API\Alinta\WebAPI\CustomerData\obj\Debug\net5.0\CustomerData.csproj.CoreCompileInputs.cache
+C:\MyDocs\Technology\Microsoft\ASP.NETCore5.1API\Alinta\WebAPI\CustomerData\obj\Debug\net5.0\CustomerData.dll
+C:\MyDocs\Technology\Microsoft\ASP.NETCore5.1API\Alinta\WebAPI\CustomerData\obj\Debug\net5.0\ref\CustomerData.dll
+C:\MyDocs\Technology\Microsoft\ASP.NETCore5.1API\Alinta\WebAPI\CustomerData\obj\Debug\net5.0\CustomerData.pdb

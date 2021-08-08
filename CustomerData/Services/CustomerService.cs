@@ -2,9 +2,6 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace CustomerData.Services
@@ -21,7 +18,6 @@ namespace CustomerData.Services
             _databaseContext = _scope.ServiceProvider.GetRequiredService<CustomerContext>();
         }
 
-        
         public async Task<int> AddCustomer(Customer costomer)
         {
             if (_databaseContext != null)
@@ -52,10 +48,7 @@ namespace CustomerData.Services
                 }
                
             }
-
             return result;
-
-
         }
 
         public async Task<int> DeleteCustomer(int? customerId)
@@ -72,7 +65,6 @@ namespace CustomerData.Services
                     
                     _databaseContext.Customers.Remove(customer);
 
-                    //Commit the transaction
                     result = await _databaseContext.SaveChangesAsync();
                 }
                 return result;
@@ -89,7 +81,7 @@ namespace CustomerData.Services
                 return customer;
             }
             return null;
-
         }
+
     }
 }
